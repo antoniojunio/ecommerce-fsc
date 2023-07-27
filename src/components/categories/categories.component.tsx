@@ -22,9 +22,6 @@ const Categories = () => {
   
   }
 
-  console.log({categories});
-
-
   useEffect(() => {
     fethCategories()
   }, [])
