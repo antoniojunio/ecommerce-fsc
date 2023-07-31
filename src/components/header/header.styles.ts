@@ -13,13 +13,13 @@ export const HeaderContainer = styled.div`
 export const HeaderTitle  = styled.h2`
   font-weight: bold;
   font-size: 1.5rem;
-`;
+`
 
 export const HeaderItems = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 export const HeaderItem = styled.div`
   font-weight: 600;
@@ -32,4 +32,4 @@ export const HeaderItem = styled.div`
   &:nth-child(3) {
     margin-right: 40px;
   }
-`;
+`
