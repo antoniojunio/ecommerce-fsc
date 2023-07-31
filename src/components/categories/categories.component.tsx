@@ -8,7 +8,6 @@ import CategoryItem from '../category-item/category-item.component'
 import Category from '../../types/category.types'
 
 // Styles
-import './categories.style.css'
 import { CategoriesContainer, CategoriesContent } from './categories.styles'
 
 const Categories = () => {
