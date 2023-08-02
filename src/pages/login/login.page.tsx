@@ -7,6 +7,7 @@ import validator from 'validator'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import Header from '../../components/header/header.component'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+import CustomInput from '../../components/custom-input/custom-input.component'
 
 // Styles
 import {
@@ -16,14 +17,18 @@ import {
   LoginInputContainer,
   LoginSubtitle
 } from './login.styles'
-import CustomInput from '../../components/custom-input/custom-input.component'
+
+interface LoginForm {
+  email: string
+  password: string
+}
 
 const LoginPage = () => {
   const {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm()
+  } = useForm<LoginForm>()
 
   const handleSubmitPress = (data: any) => {
     console.log({ data })
