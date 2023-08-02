@@ -7,7 +7,9 @@ interface CustomInputProps {
   children: React.ReactNode
 }
 
-const InputErrorMessage: FunctionComponent<CustomInputProps> = ({ children }) => {
+const InputErrorMessage: FunctionComponent<CustomInputProps> = ({
+  children
+}) => {
   return <InputErrorMessageContainer>{children}</InputErrorMessageContainer>
 }
 
