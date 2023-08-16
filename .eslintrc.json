@@ -19,6 +19,8 @@
     "no-use-before-define": "off",
     "space-before-function-paren": "off",
     "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": "off"
+    "@typescript-eslint/no-empty-function": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn" // <--- THIS IS THE NEW RULE
   }
 }
