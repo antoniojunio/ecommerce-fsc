@@ -16,7 +16,9 @@ interface CustomCurrentUser {
 export const UserContext = createContext<IUserContext>({
   currentUser: null,
   isAuthenticated: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   loginUser: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   logoutUser: () => {}
 })
 
