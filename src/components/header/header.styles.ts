@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import Colors from "../../theme/theme.colors";
+import { styled } from 'styled-components'
+import Colors from '../../theme/theme.colors'
 
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -10,9 +10,13 @@ export const HeaderContainer = styled.div`
   color: ${Colors.text.white};
 `
 
-export const HeaderTitle  = styled.h2`
+export const HeaderTitle = styled.h2`
   font-weight: bold;
   font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const HeaderItems = styled.div`
