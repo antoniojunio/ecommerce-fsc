@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { FunctionComponent, useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 // Pages
 import HomePage from './pages/home/home.page'
@@ -10,7 +11,6 @@ import SignUpPage from './pages/sign-up/sign-up-page'
 // Utilities
 import { auth, db } from './config/firebase.config'
 import { UserContext } from './contexts/user.context'
-import { collection, getDocs, query, where } from 'firebase/firestore'
 
 const App: FunctionComponent = () => {
   const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext)
