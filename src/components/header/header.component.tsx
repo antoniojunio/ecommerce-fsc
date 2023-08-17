@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 // Utilities
 import { auth } from '../../config/firebase.config'
 import { UserContext } from '../../contexts/user.context'
+import { CartContext } from '../../contexts/cart.context'
 
 // Styles
 import {
@@ -18,6 +19,7 @@ import {
 const Header = () => {
   const navigate = useNavigate()
   const { isAuthenticated } = useContext(UserContext)
+  const { toggleCart } = useContext(CartContext)
 
   const handleLogoClick = () => {
     navigate('/')
@@ -51,7 +53,7 @@ const Header = () => {
         {isAuthenticated && (
           <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
         )}
-        <HeaderItem>
+        <HeaderItem onClick={toggleCart}>
           <BsCart3 size={25} />
           <p style={{ marginLeft: 5 }}>5</p>
         </HeaderItem>
