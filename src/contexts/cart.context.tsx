@@ -7,6 +7,7 @@ interface ICartContext {
   products: CartProduct[]
   toggleCart: () => void
   addProductToCart: (product: Product) => void
+  removeProductFromCart: (productId: string) => void
 }
 
 interface CartContextProps {
@@ -19,7 +20,9 @@ export const CartContext = createContext<ICartContext>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleCart: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  addProductToCart: () => {}
+  addProductToCart: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  removeProductFromCart: () => {}
 })
 
 const CartContextProvider: FunctionComponent<CartContextProps> = ({
@@ -53,9 +56,21 @@ const CartContextProvider: FunctionComponent<CartContextProps> = ({
     setProducts((prevState) => [...prevState, { ...product, quantity: 1 }])
   }
 
+  const removeProductFromCart = (productId: string) => {
+    setProducts((products) =>
+      products.filter((product) => product.id !== productId)
+    )
+  }
+
   return (
     <CartContext.Provider
-      value={{ isVisible, products, toggleCart, addProductToCart }}>
+      value={{
+        isVisible,
+        products,
+        toggleCart,
+        addProductToCart,
+        removeProductFromCart
+      }}>
       {children}
     </CartContext.Provider>
   )
