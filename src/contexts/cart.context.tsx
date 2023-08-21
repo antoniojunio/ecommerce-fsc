@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { FunctionComponent, createContext, useState } from 'react'
 import CartProduct from '../types/cart.types'
 import Product from '../types/product.types'
@@ -8,6 +9,7 @@ interface ICartContext {
   toggleCart: () => void
   addProductToCart: (product: Product) => void
   removeProductFromCart: (productId: string) => void
+  increaseProductQuantity: (productId: string) => void
 }
 
 interface CartContextProps {
@@ -17,12 +19,10 @@ interface CartContextProps {
 export const CartContext = createContext<ICartContext>({
   isVisible: false,
   products: [],
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleCart: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   addProductToCart: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  removeProductFromCart: () => {}
+  removeProductFromCart: () => {},
+  increaseProductQuantity: () => {}
 })
 
 const CartContextProvider: FunctionComponent<CartContextProps> = ({
@@ -62,6 +62,16 @@ const CartContextProvider: FunctionComponent<CartContextProps> = ({
     )
   }
 
+  const increaseProductQuantity = (productId: string) => {
+    setProducts((products) =>
+      products.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
+    )
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -69,7 +79,8 @@ const CartContextProvider: FunctionComponent<CartContextProps> = ({
         products,
         toggleCart,
         addProductToCart,
-        removeProductFromCart
+        removeProductFromCart,
+        increaseProductQuantity
       }}>
       {children}
     </CartContext.Provider>
