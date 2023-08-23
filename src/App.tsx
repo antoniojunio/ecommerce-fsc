@@ -9,6 +9,7 @@ import LoginPage from './pages/login/login.page'
 import SignUpPage from './pages/sign-up/sign-up-page'
 import ExplorePage from './pages/explore/explore.page'
 import CheckoutPage from './pages/checkout/checkout.page'
+import CategoryDetailsPage from './pages/category-details/category-details.page'
 
 // Utilities
 import { auth, db } from './config/firebase.config'
@@ -17,8 +18,8 @@ import { userConverter } from './components/converters/firestore.converters'
 
 // Components
 import Loading from './components/loading/loading.component'
-import CategoryDetailsPage from './pages/category-details/category-details.page'
 import Cart from './components/cart/cart.component'
+import AuthenticationGuard from './guards/authentication.guard'
 
 const App: FunctionComponent = () => {
   const [isInitializing, setIsInitializing] = useState(true)
@@ -60,7 +61,14 @@ const App: FunctionComponent = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/category/:id" element={<CategoryDetailsPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route
+          path="/checkout"
+          element={
+            <AuthenticationGuard>
+              <CheckoutPage />
+            </AuthenticationGuard>
+          }
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
       </Routes>
