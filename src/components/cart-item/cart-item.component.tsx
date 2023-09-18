@@ -13,7 +13,11 @@ import {
   RemoveButton
 } from './cart-item.styles'
 import { useDispatch } from 'react-redux'
-import { decreaseCartProductQuantity, increaseCartProductQuantity, removeProductFromCart } from '../../store/reducers/cart/cart.actions'
+import {
+  decreaseCartProductQuantity,
+  increaseCartProductQuantity,
+  removeProductFromCart
+} from '../../store/toolkit/cart/cart.slice'
 
 interface CartItemProps {
   product: CartProduct

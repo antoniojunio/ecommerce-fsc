@@ -5,8 +5,11 @@ import { useDispatch } from 'react-redux'
 
 // Utilities
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { toggleCart } from '../../store/reducers/cart/cart.actions'
-import { selectProductsCount, selectProductsTotalPrice } from '../../store/reducers/cart/cart.selectors'
+import { toggleCart } from '../../store/toolkit/cart/cart.slice'
+import {
+  selectProductsCount,
+  selectProductsTotalPrice
+} from '../../store/reducers/cart/cart.selectors'
 
 // Components
 import CustomButton from '../custom-button/custom-button.component'
@@ -22,7 +25,7 @@ import {
 } from './cart.styles'
 
 const Cart: FunctionComponent = () => {
-  const { isVisible, products } = useAppSelector(state => state.cartReducer)
+  const { isVisible, products } = useAppSelector((state) => state.cartReducer)
 
   const productsTotalPrice = useAppSelector(selectProductsTotalPrice)
   const productsCount = useAppSelector(selectProductsCount)
