@@ -16,8 +16,8 @@ import PaymentConfirmationPage from './pages/payment-confirmation/payment-confir
 // Utilities
 import { auth, db } from './config/firebase.config'
 import { userConverter } from './components/converters/firestore.converters'
-import { loginUser, logoutUser } from './store/reducers/user/user.actions'
 import { useAppSelector } from './hooks/redux.hooks'
+import { loginUser, logoutUser } from './store/toolkit/user/user.slice'
 
 // Components
 import Loading from './components/loading/loading.component'

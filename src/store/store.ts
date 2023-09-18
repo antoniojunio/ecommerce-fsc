@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { createStore, applyMiddleware } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 // @ts-ignore
@@ -22,7 +22,11 @@ const persistedRootReducer: typeof rootReducer = persistReducer(
   rootReducer
 )
 
-export const store = createStore(persistedRootReducer, applyMiddleware(thunk, logger))
+export const store = configureStore({
+  reducer : persistedRootReducer ,
+  middleware: [thunk, logger]
+})
+
 export const persistedStore = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
